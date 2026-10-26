@@ -1,0 +1,15 @@
+\begin{tabular}{lccc}
+\hline
+Models & MAE & RMSE & MAPE (\%) \\
+\hline
+Seasonal naive & 13142.84 & 17368.62 & 17.81 \\
+LSTM & 14950.56 $\pm$ 2852.78 & 17201.96 $\pm$ 2871.63 & 22.36 $\pm$ 3.98 \\
+GRU & 14483.05 $\pm$ 1443.23 & 18209.92 $\pm$ 3112.23 & 21.10 $\pm$ 0.91 \\
+SVR & 19436.90 & 22340.18 & 28.07 \\
+GAN & \textbf{11104.60 $\pm$ 1837.75} & 14631.07 $\pm$ 2805.88 & \textbf{14.44 $\pm$ 1.71} \\
+ARIMAX & 15831.37 & 20694.79 & 22.36 \\
+SARIMAX & 12437.86 & 17186.46 & 15.67 \\
+ANN & 12255.42 $\pm$ 1120.98 & \textbf{14237.81 $\pm$ 858.59} & 19.99 $\pm$ 1.06 \\
+\hline
+\end{tabular}
+% ANN, LSTM, GRU, GAN: mean $\pm$ std over 4 seeds. Seasonal naive, SVR, ARIMAX, SARIMAX: deterministic, single run.
