@@ -64,8 +64,9 @@ python Code/BM_SNAIVE.py
 # 3. Feature ablation study (uses the selected GAN hyperparameters)
 python Code/GAN_feature_ablation.py
 
-# 4. Build Table 2 and the prediction figures
+# 4. Build Table 2, the Diebold-Mariano test (Table 4) and the prediction figures
 python Code/PR_testset_table.py
+python Code/PR_dm_test.py
 python Code/PR_all_models_plots.py
 ```
 
@@ -78,6 +79,7 @@ python Code/PR_all_models_plots.py
 | `BM_SNAIVE.py` | Seasonal naive forecast | Table 2 |
 | `GAN_feature_ablation.py` | GAN retrained without the search index or the COVID-19 dummy | Table 3 |
 | `PR_testset_table.py` | Performance comparison table (CSV and LaTeX) | Table 2 |
+| `PR_dm_test.py` | Diebold–Mariano test of the GAN against each benchmark (CSV and LaTeX) | Table 4 |
 | `PR_all_models_plots.py` | Test-set prediction plots | Figs. 6–7 |
 
 **Hyperparameter search.** In the neural scripts, the full search grids of Table 1 are listed first and are then overridden by the selected values (e.g. `LR_GRID = [0.001]`), so that the final results can be reproduced quickly. To repeat the full grid search, delete the lines below `# Selected values (Table 1)`. The full GAN search is slow on a CPU (6 × 4 × 4 configurations × 3 seeds).
@@ -88,20 +90,20 @@ The neural models are tuned with three seeds (10, 11, 12) and the final models a
 
 | Model | MAE | RMSE | MAPE (%) |
 |-------|-----|------|----------|
-| Seasonal naive | 13142.84 | 17368.62 | 17.81 |
-| LSTM | 14950.56 ± 2852.78 | 17201.96 ± 2871.63 | 22.36 ± 3.98 |
-| GRU | 14483.05 ± 1443.23 | 18209.92 ± 3112.23 | 21.10 ± 0.91 |
-| SVR | 19436.90 | 22340.18 | 28.07 |
-| **GAN** | **11104.60 ± 1837.75** | 14631.07 ± 2805.88 | **14.44 ± 1.71** |
-| ARIMAX | 15831.37 | 20694.79 | 22.36 |
-| SARIMAX | 12437.86 | 17186.46 | 15.67 |
-| ANN | 12255.42 ± 1120.98 | **14237.81 ± 858.59** | 19.99 ± 1.06 |
+| Seasonal naive | 13,142.84 | 17,368.62 | 17.81 |
+| LSTM | 14,950.56 ± 2,852.78 | 17,201.96 ± 2,871.63 | 22.36 ± 3.98 |
+| GRU | 14,483.05 ± 1,443.23 | 18,209.92 ± 3,112.23 | 21.10 ± 0.91 |
+| SVR | 19,436.90 | 22,340.18 | 28.07 |
+| **GAN** | **11,104.60 ± 1,837.75** | 14,631.07 ± 2,805.88 | **14.44 ± 1.71** |
+| ARIMAX | 15,831.37 | 20,694.79 | 22.36 |
+| SARIMAX | 12,437.86 | 17,186.46 | 15.67 |
+| ANN | 12,255.42 ± 1,120.98 | **14,237.81 ± 858.59** | 19.99 ± 1.06 |
 
 ## GAN Model design
 
 The GRU generator and Conv1D discriminator architecture of the GAN model is adapted from Lin et al. (2021):
 
-> H. Lin, C. Chen, G. Huang and A. Jafari, "Stock price prediction using generative adversarial networks," *Journal of Computer Science*, vol. 17, no. 3, pp. 188–196, 2021, doi: [10.3844/jcssp.2021.188.196](https://doi.org/10.3844/jcssp.2021.188.196).
+> H. Lin, C. Chen, G. Huang and A. Jafari, "Stock price prediction using generative adversarial networks," *Journal of Computer Science*, vol. 17, no. 3, pp. 188–196, 2021
 
 
 ## License
